@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>ERP 企业管理系统</title>
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<!-- 登录页 -->
+<div class="login-page" id="loginPage">
+  <div class="login-bg">
+    <div class="login-card">
+      <div class="login-brand">
+        <div class="login-logo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7" rx="1.5"/>
+            <rect x="14" y="3" width="7" height="7" rx="1.5"/>
+            <rect x="3" y="14" width="7" height="7" rx="1.5"/>
+            <rect x="14" y="14" width="7" height="7" rx="1.5"/>
+          </svg>
+        </div>
+        <h1>ERP 企业管理系统</h1>
+        <p>业财一体 · 进销存 · 决策支撑</p>
+      </div>
+      <div class="form-group">
+        <label>账号</label>
+        <input class="input" id="loginUser" value="admin">
+      </div>
+      <div class="form-group">
+        <label>密码</label>
+        <input type="password" class="input" id="loginPwd" value="admin123">
+      </div>
+      <button class="btn btn-primary btn-block" id="loginBtn">登 录</button>
+      <p class="login-tip">默认账号 admin / admin123，登录后请及时修改密码</p>
+    </div>
+  </div>
+</div>
+
+<!-- 主界面 -->
+<div class="layout hidden" id="layout">
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="7" height="7" rx="1.5"/>
+          <rect x="14" y="3" width="7" height="7" rx="1.5"/>
+          <rect x="3" y="14" width="7" height="7" rx="1.5"/>
+          <rect x="14" y="14" width="7" height="7" rx="1.5"/>
+        </svg>
+      </div>
+      <div>
+        <div class="brand-text">ERP 管理系统</div>
+        <div class="brand-sub">业财一体 · 进销存</div>
+      </div>
+    </div>
+    <nav class="nav" id="nav"></nav>
+    <div class="sidebar-footer">
+      <div class="user-info">
+        <div class="avatar" id="avatar">A</div>
+        <div class="user-meta">
+          <div class="uname" id="userName">-</div>
+          <div class="urole" id="userRole">-</div>
+        </div>
+      </div>
+      <button class="btn-logout" id="logoutBtn" title="退出登录">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+          <polyline points="16 17 21 12 16 7"/>
+          <line x1="21" y1="12" x2="9" y2="12"/>
+        </svg>
+      </button>
+    </div>
+  </aside>
+  <main class="main">
+    <header class="topbar">
+      <div class="topbar-left"><h2 id="pageTitle">工作台</h2></div>
+      <div class="topbar-right">
+        <div class="search-box">
+          <span class="search-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </span>
+          <input class="search-input" id="globalSearch" placeholder="搜索商品 / 客户 / 供应商 / 单据…" autocomplete="off">
+          <kbd class="search-kbd">/</kbd>
+        </div>
+        <span class="clock" id="clock"></span>
+        <button class="win-btn theme-toggle" id="themeToggle" title="切换明暗主题">
+          <span class="ico-sun">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.93" y1="4.93" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.93" y1="19.07" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"/></svg>
+          </span>
+          <span class="ico-moon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </span>
+        </button>
+        <div class="topbar-actions">
+          <button class="win-btn" onclick="pywebview.api.minimize()" title="最小化">─</button>
+          <button class="win-btn" onclick="pywebview.api.toggle_maximize()" title="最大化">□</button>
+          <button class="win-btn win-close" onclick="pywebview.api.close()" title="关闭">×</button>
+        </div>
+      </div>
+    </header>
+    <div class="search-panel hidden" id="searchPanel"></div>
+    <section class="content" id="content"></section>
+  </main>
+</div>
+
+<div class="modal-mask hidden" id="modalMask">
+  <div class="modal" id="modalBox">
+    <div class="modal-head">
+      <h3 id="modalTitle"></h3>
+      <button class="modal-close" id="modalClose">×</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-foot" id="modalFoot"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<script src="/static/js/app.js"></script>
+</body>
+</html>

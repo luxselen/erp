@@ -1,0 +1,55 @@
+# 文档（用户要求不上传 .md）
+*.md
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+*.egg
+
+# 数据库（含用户数据，不上传）
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+*.db.backup
+*.db.demo_backup
+
+# 打包产物
+build/
+dist/
+packages/
+*.spec.bak
+
+# 日志
+logs/
+*.log
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# 临时/调试文件（无扩展名的调试产物）
+ai_settings
+dark_dashboard
+dark_dashboard_final
+light_dashboard
+search_panel
+_probe.py
+_refactor_voucher.py
+
+# 系统
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 环境变量
+.env
+.env.local
